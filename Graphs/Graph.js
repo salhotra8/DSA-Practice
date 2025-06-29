@@ -25,8 +25,14 @@ function addNode(airport) {
 
 // Add edge, undirected
 function addEdge(origin, destination) {
-  adjacencyList.get(origin).push(destination);
-  adjacencyList.get(destination).push(origin);
+  if (!adjacencyList.get(origin).includes(destination)) {
+    adjacencyList.get(origin).push(destination);
+  }
+
+  // For an undirected graph, also check the reverse edge
+  if (!adjacencyList.get(destination).includes(origin)) {
+    adjacencyList.get(destination).push(origin);
+  }
 }
 
 // Create the Graph
