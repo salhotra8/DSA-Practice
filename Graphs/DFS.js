@@ -3,9 +3,9 @@ function graphDfs(startVertex, visited = new Set()) {
   //do whatever needed here if you are doing search only then 'return' as well otherwise carryon with recurrsion
   console.log(startVertex);
 
-  const neighbors = graph1.edges[startVertex];
+  const neighbors = graph1[startVertex];
 
-  for (let neighbor in neighbors) {
+  for (let neighbor of Object.keys(neighbors)) {
     if (!visited.has(neighbor)) {
       graphDfs(neighbor, visited);
     }

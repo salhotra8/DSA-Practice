@@ -3,16 +3,17 @@ function graphBfs(startVertex) {
   const visited = new Set();
 
   queue.push(startVertex);
+  visited.add(startVertex);
 
   while (queue.length) {
     const vertex = queue.shift();
-    const neighbors = graph1.edges[vertex];
+    const neighbors = graph1[vertex];
 
-    if (!visited.has(vertex)) {
-      visited.add(vertex);
-      // print all or check whether a particule vertex present
-      console.log(vertex, neighbors, visited);
-      for (let neighbor in neighbors) {
+    // print all or check whether a particule vertex present
+    console.log(vertex, neighbors, visited);
+    for (let neighbor of Object.keys(neighbors)) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
         queue.push(neighbor);
       }
     }
